@@ -1,7 +1,10 @@
 // apps/frontend/src/app/page.tsx
 async function getBackendMessage() {
+
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
+
   try {
-    const res = await fetch('http://localhost:3001', { cache: 'no-store' });
+    const res = await fetch(apiUrl, { cache: 'no-store' });
     if (!res.ok) throw new Error('Falló la conexión al backend');
     return res.json();
   } catch (error) {
